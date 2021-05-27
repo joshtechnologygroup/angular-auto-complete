@@ -745,7 +745,7 @@
 
         function _renderItems(renderFn, dataItems) {
             // limit number of items rendered in the dropdown
-            var dataItemsToRender = _.slice(dataItems, 0, that.options.maxItemsToRender);
+            var dataItemsToRender = dataItems.slice(0, that.options.maxItemsToRender);
 
             var itemsToRender = _.map(dataItemsToRender, function (data, index) {
                 // invoke render callback with the data as parameter
@@ -874,7 +874,7 @@
 
                 linkFn(createEntryScope(scope), function (clonedElement) {
                     // append to the directive element's parent (<li>) since this directive element is replaced (transclude is set to 'element').
-                    $(element[0].parentNode).append(clonedElement);
+                    (element[0].parentNode).append(clonedElement[0]);
                 });
             }
         };
@@ -921,7 +921,7 @@
                 var linkFn = $compile(scope.ctrl.template);
                 linkFn(createEntryScope(scope), function (clonedElement) {
                     // append to the directive element's parent (<li>) since this directive element is replaced (transclude is set to 'element').
-                    $(element[0].parentNode).append(clonedElement);
+                    element[0].parentNode.append(clonedElement[0]);
                 });
             }
         };
